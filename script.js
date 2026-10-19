@@ -1,4 +1,36 @@
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
+
+const demoTabs = [...document.querySelectorAll('.demo-tab')];
+const layerFiles = ['index.html', 'styles.css', 'script.js'];
+const layerDescriptions = ['01 / GIVE THE IDEA A STRUCTURE', '02 / ADD A LITTLE PERSONALITY', '03 / MAKE THE DETAILS RESPOND'];
+function selectLayer(index) {
+  demoTabs.forEach((tab, position) => {
+    const selected = position === index;
+    tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+    document.getElementById(tab.getAttribute('aria-controls')).hidden = !selected;
+  });
+  document.querySelector('#editor-file').textContent = layerFiles[index];
+  document.querySelector('#layer-description').textContent = layerDescriptions[index];
+}
+demoTabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => selectLayer(index));
+  tab.addEventListener('keydown', (event) => {
+    let next = index;
+    if (event.key === 'ArrowRight') next = (index + 1) % demoTabs.length;
+    else if (event.key === 'ArrowLeft') next = (index + demoTabs.length - 1) % demoTabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = demoTabs.length - 1;
+    else return;
+    event.preventDefault();
+    selectLayer(next);
+    demoTabs[next].focus();
+  });
+});
+document.querySelector('#say-hello')?.addEventListener('click', () => {
+  document.querySelector('#greeting').textContent = 'Hey there. Nice to meet you! — Aman';
+});
 
 // Content stays visible if motion is disabled or enhancement is unavailable.
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -22,7 +54,7 @@ if (!motionPreference.matches && 'IntersectionObserver' in window && 'animate' i
     }
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.section-head, .project, .about, .contact, .skill-card, .skills-outro, footer').forEach((element) => revealObserver.observe(element));
+  document.querySelectorAll('.section-head, .project, .tool-card, .about, .process-grid article, .skill-card, .skills-outro').forEach((element) => revealObserver.observe(element));
 }
 
 motionPreference.addEventListener('change', (event) => {
