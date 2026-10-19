@@ -22,7 +22,7 @@ if (!motionPreference.matches && 'IntersectionObserver' in window && 'animate' i
     }
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.section-head, .project, .about, .contact, footer').forEach((element) => revealObserver.observe(element));
+  document.querySelectorAll('.section-head, .project, .about, .contact, .skill-card, .skills-outro, footer').forEach((element) => revealObserver.observe(element));
 }
 
 motionPreference.addEventListener('change', (event) => {
