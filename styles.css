@@ -27,3 +27,8 @@ footer{background:#111;color:white;padding:38px 5% 0;border-top:var(--line);over
 @media(max-width:900px){.about{grid-template-columns:1fr;gap:32px}.connection-card{max-width:510px;width:100%;margin:auto}}
 @media(max-width:760px){.hero{padding-bottom:39px}.hero-role{font-size:26px}.toolkit-grid{grid-template-columns:1fr}.connect-main{padding:40px 6% 49px}.connect-profile{padding:28px}.connect-profile h1{font-size:64px}.profile-resources{grid-template-columns:1fr}}
 @media(max-width:480px){.hero-role{font-size:23px;letter-spacing:-.6px}.hero-copy{margin:18px auto 26px}.connection-card{padding:22px 18px;box-shadow:5px 5px 0 var(--ink)}.connection-card h3{font-size:27px}.connect-card-heading .eyebrow{font-size:12px}.card-actions{grid-template-columns:1fr;gap:15px}.card-actions .button{font-size:13px}.card-qr{padding:12px 8px}.card-qr>a,.card-qr img{width:164px;height:164px}.connect-card-links{font-size:14px;gap:15px}.connect-profile{padding:27px 19px}.connect-profile h1{font-size:17vw;letter-spacing:-1.6px}.connect-profile .sticker{font-size:12px}.connect-role{font-size:22px}.profile-links>a{padding:15px 17px}}
+
+/* Keep the expanded navigation usable on smaller screens. */
+.site-header nav{flex-wrap:wrap}
+@media(max-width:1100px){.site-header{column-gap:17px}.site-header nav{column-gap:17px}}
+@media(max-width:480px){.site-header nav{justify-content:space-between;column-gap:12px;row-gap:2px}.site-header nav a{font-size:var(--label);min-height:40px;display:flex;align-items:center}}
