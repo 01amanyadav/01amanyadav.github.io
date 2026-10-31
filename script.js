@@ -110,6 +110,32 @@ if ('IntersectionObserver' in window) {
   });
 }
 
+
+// Share the public contact page; copying the URL is the fallback.
+const profileUrl = 'https://theamanyadav.me/connect.html';
+document.querySelectorAll('[data-share-profile]').forEach((button) => {
+  button.addEventListener('click', async () => {
+    const status = button.closest('.connection-card, .connect-profile')?.querySelector('.share-status');
+    const showStatus = (message) => { if (status) status.textContent = message; };
+    if (navigator.share) {
+      try {
+        showStatus('Choose an app to share your contact page.');
+        await navigator.share({ title: 'Aman Yadav — Backend Engineer', text: 'Connect with Aman Yadav', url: profileUrl });
+        showStatus('Contact page shared.');
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') { showStatus(''); return; }
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(profileUrl);
+      showStatus('Contact link copied. You can paste it anywhere.');
+    } catch {
+      showStatus('Share this link: ' + profileUrl);
+    }
+  });
+});
+
 // Content stays visible if motion is disabled or enhancement is unavailable.
 const runningAnimations = new Set();
 let revealObserver;

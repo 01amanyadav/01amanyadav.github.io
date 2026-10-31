@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Yadav;Aman;;;
+FN:Aman Yadav
+TITLE:Backend Engineer
+EMAIL;TYPE=INTERNET:08amanyadav@gmail.com
+URL:https://theamanyadav.me/connect.html
+X-SOCIALPROFILE;TYPE=github:https://github.com/01amanyadav
+X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/08amanyadav
+END:VCARD
